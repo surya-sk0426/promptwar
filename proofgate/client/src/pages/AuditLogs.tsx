@@ -52,11 +52,10 @@ export default function AuditLogs() {
                     {event.requested_action}
                   </td>
                   <td className="px-6 py-4 whitespace-nowrap">
-                    <span className={`inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-medium ${
-                      event.policy_decision === 'ALLOW' ? 'bg-successGreen/10 text-successGreen border border-successGreen/20' :
-                      event.policy_decision === 'BLOCK' ? 'bg-errorRed/10 text-errorRed border border-errorRed/20' :
-                      'bg-warningAmber/10 text-warningAmber border border-warningAmber/20'
-                    }`}>
+                    <span className={`inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-medium ${event.policy_decision === 'ALLOW' ? 'bg-successGreen/10 text-successGreen border border-successGreen/20' :
+                        event.policy_decision === 'BLOCK' ? 'bg-errorRed/10 text-errorRed border border-errorRed/20' :
+                          'bg-warningAmber/10 text-warningAmber border border-warningAmber/20'
+                      }`}>
                       {event.policy_decision}
                     </span>
                   </td>

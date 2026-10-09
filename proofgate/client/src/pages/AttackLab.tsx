@@ -60,17 +60,16 @@ export default function AttackLab() {
           <FlaskConical className="w-5 h-5 text-accentViolet" />
           Test Scenarios
         </h3>
-        
+
         <div className="space-y-3 flex-1 overflow-y-auto pr-2">
           {scenarios.map(scenario => (
             <button
               key={scenario.id}
               onClick={() => { setSelectedScenario(scenario); setResult(null); }}
-              className={`w-full text-left p-4 rounded-lg border transition-all ${
-                selectedScenario.id === scenario.id
+              className={`w-full text-left p-4 rounded-lg border transition-all ${selectedScenario.id === scenario.id
                   ? 'bg-accentViolet/10 border-accentViolet text-white'
                   : 'bg-[#1C1C1E] border-gray-800 text-gray-400 hover:border-gray-600'
-              }`}
+                }`}
             >
               <div className="font-medium text-sm mb-1">{scenario.name}</div>
               <div className="text-xs opacity-70 line-clamp-2">{scenario.description}</div>
@@ -84,7 +83,7 @@ export default function AttackLab() {
         <div className="bg-[#161618] border border-gray-800 rounded-xl p-6 shadow-sm">
           <h2 className="text-xl font-bold text-white mb-2">{selectedScenario.name}</h2>
           <p className="text-sm text-gray-400 mb-6">{selectedScenario.description}</p>
-          
+
           <div className="mb-6">
             <span className="text-xs font-semibold text-gray-500 uppercase tracking-wider mb-2 block">Payload</span>
             <div className="bg-[#1C1C1E] p-4 rounded-lg border border-gray-800 text-sm font-mono text-gray-300 whitespace-pre-wrap">
@@ -122,32 +121,30 @@ export default function AttackLab() {
         {result && (
           <div className="bg-[#161618] border border-gray-800 rounded-xl p-6 flex-1 overflow-y-auto">
             <h3 className="text-lg font-medium text-white mb-4">Evaluation Results</h3>
-            
+
             <div className="grid grid-cols-2 gap-4 mb-6">
               <div className="p-4 rounded-lg bg-[#1C1C1E] border border-gray-800">
                 <span className="text-xs text-gray-500 block mb-1">Actual Decision</span>
                 <div className="flex items-center gap-2">
-                  <span className={`font-bold ${
-                    result.policy.decision === selectedScenario.expectedDecision ? 'text-successGreen' : 'text-errorRed'
-                  }`}>
+                  <span className={`font-bold ${result.policy.decision === selectedScenario.expectedDecision ? 'text-successGreen' : 'text-errorRed'
+                    }`}>
                     {result.policy.decision}
                   </span>
-                  {result.policy.decision === selectedScenario.expectedDecision 
-                    ? <CheckCircle2 className="w-4 h-4 text-successGreen" /> 
+                  {result.policy.decision === selectedScenario.expectedDecision
+                    ? <CheckCircle2 className="w-4 h-4 text-successGreen" />
                     : <XCircle className="w-4 h-4 text-errorRed" />}
                 </div>
               </div>
-              
+
               <div className="p-4 rounded-lg bg-[#1C1C1E] border border-gray-800">
                 <span className="text-xs text-gray-500 block mb-1">Actual Execution</span>
                 <div className="flex items-center gap-2">
-                  <span className={`font-bold ${
-                    result.executionOutcome === selectedScenario.expectedExecution ? 'text-successGreen' : 'text-errorRed'
-                  }`}>
+                  <span className={`font-bold ${result.executionOutcome === selectedScenario.expectedExecution ? 'text-successGreen' : 'text-errorRed'
+                    }`}>
                     {result.executionOutcome.replace(/_/g, ' ')}
                   </span>
-                  {result.executionOutcome === selectedScenario.expectedExecution 
-                    ? <CheckCircle2 className="w-4 h-4 text-successGreen" /> 
+                  {result.executionOutcome === selectedScenario.expectedExecution
+                    ? <CheckCircle2 className="w-4 h-4 text-successGreen" />
                     : <XCircle className="w-4 h-4 text-errorRed" />}
                 </div>
               </div>
@@ -157,11 +154,11 @@ export default function AttackLab() {
               <div>
                 <span className="text-xs text-gray-500 font-medium mb-1 block">Policy Enforcement Proof</span>
                 <p className="text-sm text-gray-300">
-                  {result.policy.decision === 'BLOCK' && result.executionOutcome === 'BLOCKED' 
+                  {result.policy.decision === 'BLOCK' && result.executionOutcome === 'BLOCKED'
                     ? "✓ Successfully verified that the independent backend policy engine prevented the unsafe tool from executing."
-                    : result.policy.decision === 'ALLOW' 
-                    ? "✓ Action was explicitly permitted by policy and executed normally."
-                    : "✓ Action correctly routed for human approval before execution."}
+                    : result.policy.decision === 'ALLOW'
+                      ? "✓ Action was explicitly permitted by policy and executed normally."
+                      : "✓ Action correctly routed for human approval before execution."}
                 </p>
               </div>
 

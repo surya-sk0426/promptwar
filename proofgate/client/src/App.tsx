@@ -30,7 +30,7 @@ function App() {
           </div>
           <h1 className="text-xl font-bold tracking-tight">ProofGate</h1>
         </div>
-        
+
         <nav className="flex-1 py-6 px-4 space-y-1">
           {navItems.map((item) => {
             const Icon = item.icon;
@@ -39,11 +39,10 @@ function App() {
               <Link
                 key={item.path}
                 to={item.path}
-                className={`flex items-center gap-3 px-4 py-3 rounded-lg transition-all duration-200 ${
-                  isActive 
-                    ? 'bg-gray-800 text-white' 
+                className={`flex items-center gap-3 px-4 py-3 rounded-lg transition-all duration-200 ${isActive
+                    ? 'bg-gray-800 text-white'
                     : 'text-gray-400 hover:text-white hover:bg-gray-800/50'
-                }`}
+                  }`}
               >
                 <Icon className={`w-5 h-5 ${isActive ? 'text-accentBlue' : ''}`} />
                 <span className="font-medium">{item.label}</span>

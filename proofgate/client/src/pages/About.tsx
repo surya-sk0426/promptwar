@@ -40,7 +40,7 @@ export default function About() {
           The Prompt Injection Problem
         </h3>
         <p className="text-gray-300 leading-relaxed mb-6">
-          LLMs are susceptible to prompt injection because they fundamentally process instructions and data through the same natural language interface. An attacker can embed malicious instructions inside an email or document that the AI is asked to process. 
+          LLMs are susceptible to prompt injection because they fundamentally process instructions and data through the same natural language interface. An attacker can embed malicious instructions inside an email or document that the AI is asked to process.
         </p>
         <p className="text-gray-300 leading-relaxed">
           <strong>ProofGate solves this not by trying to build an unhackable prompt, but by establishing a defensible security boundary.</strong> Even if an attacker successfully tricks the AI into requesting the exfiltration of customer records, the independent backend policy engine will intercept and block the action.

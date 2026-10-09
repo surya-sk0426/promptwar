@@ -19,8 +19,8 @@ export default function Policies() {
           Backend Security Policies
         </h2>
         <p className="text-gray-400 max-w-3xl">
-          The ProofGate policy engine operates independently of the AI model. 
-          Even if a prompt injection attack successfully convinces the AI to recommend a prohibited action, 
+          The ProofGate policy engine operates independently of the AI model.
+          Even if a prompt injection attack successfully convinces the AI to recommend a prohibited action,
           the backend policy engine will evaluate the requested tool and enforce the deterministic rules below.
         </p>
       </div>
@@ -40,11 +40,10 @@ export default function Policies() {
               <tr key={i} className="hover:bg-gray-800/30 transition-colors">
                 <td className="px-6 py-5 text-sm text-gray-200 font-mono text-xs">{p.tool}</td>
                 <td className="px-6 py-5">
-                  <span className={`inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-bold ${
-                    p.decision === 'ALLOW' ? 'bg-successGreen/10 text-successGreen' :
-                    p.decision === 'BLOCK' ? 'bg-errorRed/10 text-errorRed' :
-                    'bg-warningAmber/10 text-warningAmber'
-                  }`}>
+                  <span className={`inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-bold ${p.decision === 'ALLOW' ? 'bg-successGreen/10 text-successGreen' :
+                      p.decision === 'BLOCK' ? 'bg-errorRed/10 text-errorRed' :
+                        'bg-warningAmber/10 text-warningAmber'
+                    }`}>
                     {p.decision === 'ALLOW' ? <Shield className="w-3 h-3" /> : p.decision === 'BLOCK' ? <AlertTriangle className="w-3 h-3" /> : <Users className="w-3 h-3" />}
                     {p.decision}
                   </span>

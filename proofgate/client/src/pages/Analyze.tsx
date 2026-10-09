@@ -71,7 +71,7 @@ export default function Analyze() {
             </button>
           </div>
         </div>
-        
+
         <textarea
           value={content}
           onChange={(e) => setContent(e.target.value)}
@@ -100,20 +100,19 @@ export default function Analyze() {
           {/* AI Findings */}
           <div className="bg-[#161618] border border-gray-800 rounded-xl p-6 space-y-4">
             <h3 className="text-lg font-medium text-gray-200 border-b border-gray-800 pb-3">AI Threat Findings</h3>
-            
+
             <div className="space-y-3">
               <div>
                 <span className="text-sm text-gray-500 block mb-1">Threat Classification</span>
-                <span className={`inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-sm font-medium ${
-                  result.analysis.threat_classification === 'benign' 
+                <span className={`inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-sm font-medium ${result.analysis.threat_classification === 'benign'
                     ? 'bg-successGreen/10 text-successGreen border border-successGreen/20'
                     : 'bg-errorRed/10 text-errorRed border border-errorRed/20'
-                }`}>
+                  }`}>
                   {result.analysis.threat_classification === 'benign' ? <CheckCircle2 className="w-4 h-4" /> : <AlertTriangle className="w-4 h-4" />}
                   {result.analysis.threat_classification.replace(/_/g, ' ').toUpperCase()}
                 </span>
               </div>
-              
+
               <div>
                 <span className="text-sm text-gray-500 block mb-1">Summary</span>
                 <p className="text-gray-300 text-sm bg-[#1C1C1E] p-3 rounded-lg border border-gray-800">{result.analysis.summary}</p>
@@ -143,7 +142,7 @@ export default function Analyze() {
           {/* Policy Decision */}
           <div className="bg-[#161618] border border-gray-800 rounded-xl p-6 space-y-4 flex flex-col">
             <h3 className="text-lg font-medium text-gray-200 border-b border-gray-800 pb-3">Policy Engine Decision</h3>
-            
+
             <div className="flex-1 space-y-4">
               <div className="p-4 rounded-lg border flex items-center justify-between shadow-sm" style={{
                 backgroundColor: result.policy.decision === 'ALLOW' ? 'rgba(52, 199, 89, 0.05)' : result.policy.decision === 'BLOCK' ? 'rgba(255, 59, 48, 0.05)' : 'rgba(255, 149, 0, 0.05)',
@@ -151,9 +150,8 @@ export default function Analyze() {
               }}>
                 <div>
                   <p className="text-sm text-gray-400 mb-1">Authorization Status</p>
-                  <p className={`font-bold text-xl ${
-                    result.policy.decision === 'ALLOW' ? 'text-successGreen' : result.policy.decision === 'BLOCK' ? 'text-errorRed' : 'text-warningAmber'
-                  }`}>
+                  <p className={`font-bold text-xl ${result.policy.decision === 'ALLOW' ? 'text-successGreen' : result.policy.decision === 'BLOCK' ? 'text-errorRed' : 'text-warningAmber'
+                    }`}>
                     {result.policy.decision}
                   </p>
                 </div>
@@ -168,13 +166,12 @@ export default function Analyze() {
               <div>
                 <span className="text-sm text-gray-500 block mb-1">Execution Outcome</span>
                 <div className="flex items-center gap-3 bg-[#1C1C1E] p-3 rounded-lg border border-gray-800">
-                  <span className={`text-sm font-medium ${
-                    result.executionOutcome === 'EXECUTED' ? 'text-successGreen' : result.executionOutcome === 'BLOCKED' ? 'text-errorRed' : 'text-warningAmber'
-                  }`}>
+                  <span className={`text-sm font-medium ${result.executionOutcome === 'EXECUTED' ? 'text-successGreen' : result.executionOutcome === 'BLOCKED' ? 'text-errorRed' : 'text-warningAmber'
+                    }`}>
                     {result.executionOutcome.replace(/_/g, ' ')}
                   </span>
                   {result.executionOutcome === 'PENDING_APPROVAL' && (
-                    <button 
+                    <button
                       onClick={() => handleApprove(result.eventId)}
                       className="ml-auto text-xs px-3 py-1 bg-warningAmber text-[#1C1C1E] font-bold rounded hover:bg-warningAmber/90 transition-colors"
                     >
@@ -193,7 +190,7 @@ export default function Analyze() {
                 </div>
               )}
             </div>
-            
+
             <div className="pt-3 border-t border-gray-800 text-xs text-gray-500 flex justify-between">
               <span>Event ID: {result.eventId}</span>
               <span>Req Perm: {result.policy.requiredPermission}</span>
@@ -207,5 +204,5 @@ export default function Analyze() {
 
 // Quick mock FileText icon since I used it above
 function FileText(props: any) {
-  return <svg {...props} xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z"/><polyline points="14 2 14 8 20 8"/><line x1="16" x2="8" y1="13" y2="13"/><line x1="16" x2="8" y1="17" y2="17"/><line x1="10" x2="8" y1="9" y2="9"/></svg>;
+  return <svg {...props} xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z" /><polyline points="14 2 14 8 20 8" /><line x1="16" x2="8" y1="13" y2="13" /><line x1="16" x2="8" y1="17" y2="17" /><line x1="10" x2="8" y1="9" y2="9" /></svg>;
 }
