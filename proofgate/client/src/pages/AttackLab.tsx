@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Play, CheckCircle2, XCircle, FlaskConical, AlertTriangle } from 'lucide-react';
+import { API_BASE_URL } from '../config';
 
 const scenarios = [
   {
@@ -38,7 +39,7 @@ export default function AttackLab() {
     setResult(null);
 
     try {
-      const response = await fetch('http://localhost:3001/api/process', {
+      const response = await fetch(`${API_BASE_URL}/api/process`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ content: selectedScenario.content, scenarioId: selectedScenario.id }),

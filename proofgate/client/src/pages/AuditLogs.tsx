@@ -1,12 +1,13 @@
 import React, { useEffect, useState } from 'react';
 import { FileText, ShieldAlert, CheckCircle2, XCircle, AlertTriangle } from 'lucide-react';
+import { API_BASE_URL } from '../config';
 
 export default function AuditLogs() {
   const [events, setEvents] = useState<any[]>([]);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    fetch('http://localhost:3001/api/audit')
+    fetch(`${API_BASE_URL}/api/audit`)
       .then(res => res.json())
       .then(data => {
         setEvents(data.events || []);

@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { ShieldAlert, Play, CheckCircle2, XCircle, AlertTriangle, ChevronRight } from 'lucide-react';
+import { API_BASE_URL } from '../config';
 
 export default function Analyze() {
   const [content, setContent] = useState('');
@@ -12,7 +13,7 @@ export default function Analyze() {
     setResult(null);
 
     try {
-      const response = await fetch('http://localhost:3001/api/process', {
+      const response = await fetch(`${API_BASE_URL}/api/process`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ content, scenarioId: 'manual' }),
@@ -28,7 +29,7 @@ export default function Analyze() {
 
   const handleApprove = async (eventId: string) => {
     try {
-      const response = await fetch('http://localhost:3001/api/approve', {
+      const response = await fetch(`${API_BASE_URL}/api/approve`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ eventId }),

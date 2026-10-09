@@ -1,0 +1,7 @@
+{
+  "name": "promptwar-monorepo",
+  "private": true,
+  "scripts": {
+    "build": "npm --prefix proofgate/client install && npm --prefix proofgate/client run build"
+  }
+}
