@@ -1,12 +1,13 @@
-import React from 'react';
+import React, { lazy, Suspense } from 'react';
 import { Routes, Route, Link, useLocation } from 'react-router-dom';
 import { Shield, LayoutDashboard, ShieldAlert, FlaskConical, FileText, Settings, Info, Activity } from 'lucide-react';
-import Overview from './pages/Overview';
-import Analyze from './pages/Analyze';
-import AttackLab from './pages/AttackLab';
-import AuditLogs from './pages/AuditLogs';
-import Policies from './pages/Policies';
-import About from './pages/About';
+
+const Overview = lazy(() => import('./pages/Overview'));
+const Analyze = lazy(() => import('./pages/Analyze'));
+const AttackLab = lazy(() => import('./pages/AttackLab'));
+const AuditLogs = lazy(() => import('./pages/AuditLogs'));
+const Policies = lazy(() => import('./pages/Policies'));
+const About = lazy(() => import('./pages/About'));
 
 function App() {
   const location = useLocation();
@@ -80,14 +81,25 @@ function App() {
         {/* Page Content */}
         <div className="flex-1 overflow-auto p-8">
           <div className="max-w-6xl mx-auto">
-            <Routes>
-              <Route path="/" element={<Overview />} />
-              <Route path="/analyze" element={<Analyze />} />
-              <Route path="/attack-lab" element={<AttackLab />} />
-              <Route path="/audit-logs" element={<AuditLogs />} />
-              <Route path="/policies" element={<Policies />} />
-              <Route path="/about" element={<About />} />
-            </Routes>
+            <Suspense
+              fallback={
+                <div className="flex items-center justify-center h-64">
+                  <div className="flex flex-col items-center gap-3">
+                    <div className="w-8 h-8 border-2 border-accentBlue border-t-transparent rounded-full animate-spin" />
+                    <span className="text-sm text-gray-400">Loading module...</span>
+                  </div>
+                </div>
+              }
+            >
+              <Routes>
+                <Route path="/" element={<Overview />} />
+                <Route path="/analyze" element={<Analyze />} />
+                <Route path="/attack-lab" element={<AttackLab />} />
+                <Route path="/audit-logs" element={<AuditLogs />} />
+                <Route path="/policies" element={<Policies />} />
+                <Route path="/about" element={<About />} />
+              </Routes>
+            </Suspense>
           </div>
         </div>
       </main>

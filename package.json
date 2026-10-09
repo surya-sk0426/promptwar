@@ -1,7 +1,13 @@
 {
   "name": "promptwar-monorepo",
   "private": true,
+  "workspaces": [
+    "proofgate/client"
+  ],
   "scripts": {
-    "build": "npm --prefix proofgate/client install && npm --prefix proofgate/client run build"
+    "build": "node -e \"if (!fs.existsSync('proofgate/client/node_modules')) { require('child_process').execSync('npm --prefix proofgate/client install --prefer-offline --no-audit', {stdio: 'inherit'}); }\" && npm --prefix proofgate/client run build",
+    "build:client": "npm --prefix proofgate/client run build",
+    "dev:client": "npm --prefix proofgate/client run dev",
+    "dev:server": "npm --prefix proofgate/server run dev"
   }
 }
